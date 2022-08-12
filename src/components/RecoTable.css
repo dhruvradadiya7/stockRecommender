@@ -1,0 +1,22 @@
+table {
+    text-align: center;
+}
+td,
+th {
+    width: 100px;
+    padding: 10px;
+    font-size: 16px;
+    
+}
+thead {
+    background: rgba(60, 63, 65, 0.28);
+}
+tr:nth-child(2n) {
+    background: #f1f1f1;
+}
+.sell{
+    color: red;
+}
+.buy{
+    color: green;
+}

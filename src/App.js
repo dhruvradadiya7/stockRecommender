@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header";
+import StockSearchForm from "./components/StockForm";
+import { dataGenerator } from "./utils/dataGenerator";
+import Dashboard from "./components/Dashboard";
+import React, { useState } from "react";
 
 function App() {
+  const [data, setData] = useState();
+  const [stock, setStock] = useState();
+
+  const onSubmit = (symbol, days, selectedServices) => {
+    setStock(symbol);
+    setData(dataGenerator(symbol, days, selectedServices));
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <StockSearchForm onSubmitHandler={onSubmit} />
+      <Dashboard stockData={data} stockName={stock} />
     </div>
   );
 }
