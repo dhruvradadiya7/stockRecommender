@@ -6,21 +6,22 @@ const StockSearchForm = (props) => {
   const [inputValue, setInputValue] = useState("");
   const [selectedDays, setSelectedDays] = useState(10);
   const [twitter, setTwitter] = useState(true);
-  const [reddit, setReddit]  = useState(true);
-  const [quora, setQuora]  = useState(true);
-  const [facebook, setFacebook]  = useState(true);
-  
-  
+  const [reddit, setReddit] = useState(true);
+  const [quora, setQuora] = useState(true);
+  const [facebook, setFacebook] = useState(true);
+
   const onInputChange = (e) => {
     setInputValue(e.target.value);
   };
   const onDaysChange = (e) => {
     setSelectedDays(e.target.value);
   };
-  
+
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    props.onSubmitHandler(inputValue, selectedDays, [{twitter, reddit, quora, facebook}]);
+    props.onSubmitHandler(inputValue, selectedDays, [
+      { twitter, reddit, quora, facebook },
+    ]);
   };
 
   return (
@@ -28,7 +29,7 @@ const StockSearchForm = (props) => {
       <div className="stockSearch">
         <div className="stockForm">
           <form onSubmit={formSubmitHandler}>
-             Stock Symbol : 
+            Stock Symbol :
             <input
               className="searchInput"
               area-role="input"
@@ -43,21 +44,33 @@ const StockSearchForm = (props) => {
               <option value="20">20</option>
               <option value="30">30</option>
               <option value="40">40</option>
-
             </select>
             <button>Search</button>
             <div className="checkBox">
-            <CheckBox label="Twitter" checkBoxHandler={setTwitter} checked={twitter}/>
-            <CheckBox label="Reddit" checkBoxHandler={setReddit} checked={reddit}/>
-            <CheckBox label="Quora" checkBoxHandler={setQuora} checked={quora}/>
-            <CheckBox label="Facebook" checkBoxHandler={setFacebook} checked={facebook}/>
+              <CheckBox
+                label="Twitter"
+                checkBoxHandler={setTwitter}
+                checked={twitter}
+              />
+              <CheckBox
+                label="Reddit"
+                checkBoxHandler={setReddit}
+                checked={reddit}
+              />
+              <CheckBox
+                label="Quora"
+                checkBoxHandler={setQuora}
+                checked={quora}
+              />
+              <CheckBox
+                label="Facebook"
+                checkBoxHandler={setFacebook}
+                checked={facebook}
+              />
             </div>
-            
-            
           </form>
         </div>
       </div>
-     
     </>
   );
 };
